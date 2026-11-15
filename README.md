@@ -69,7 +69,13 @@ Contoh augmentasi yang dicoba:
      Pertanyaan pemandu: Polip seperti apa yang sering terlewat (kecil? datar? warna mirip dinding usus?)
      Apa yang sering dikira polip padahal bukan? Apakah augmentasi memperbaiki kasus sulit? -->
 
-✍️
+Peta kesalahan menunjukkan bahwa kemampuan model U-Net dalam melakukan segmentasi polip berbeda pada setiap citra uji. Pada dua citra yang paling sulit dikenali, model masih menghasilkan kesalahan berupa false positive dan false negative. Kesalahan tersebut terlihat dari area berwarna merah yang menunjukkan bagian bukan polip tetapi diprediksi sebagai polip, serta area biru yang menunjukkan bagian polip yang tidak berhasil terdeteksi.
+
+Penggunaan augmentasi belum sepenuhnya mengatasi kesalahan pada kedua citra tersebut. Horizontal flip menghasilkan Dice Score sebesar 0,11 pada citra pertama, sedangkan vertical flip menghasilkan Dice Score sebesar 0,16 pada citra kedua. Sementara itu, skenario tanpa augmentasi dan kecerahan serta kontras memperoleh Dice Score 0,00 pada kedua citra. Hal ini menunjukkan bahwa perubahan orientasi gambar dapat membantu model pada beberapa kasus, tetapi belum mampu meningkatkan hasil segmentasi secara konsisten pada citra yang sulit.
+
+Berbeda dengan dua citra tersebut, dua citra uji yang paling mudah dikenali menunjukkan hasil segmentasi yang lebih baik. Seluruh skenario menghasilkan Dice Score pada rentang 0,94 hingga 0,98. Hal ini menunjukkan bahwa model mampu melakukan segmentasi dengan baik pada citra yang karakteristik polipnya lebih mudah dikenali.
+
+Secara keseluruhan, peta kesalahan memperlihatkan bahwa tingkat keberhasilan segmentasi dipengaruhi oleh karakteristik citra dan kemampuan model dalam membedakan area polip dari jaringan di sekitarnya. Augmentasi dapat memberikan perbaikan pada kondisi tertentu, tetapi tidak selalu mampu mengatasi kesalahan pada citra yang memiliki tingkat kesulitan tinggi.
 
 ## 6. Pembahasan & kesimpulan
 
